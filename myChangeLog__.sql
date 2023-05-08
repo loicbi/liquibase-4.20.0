@@ -8,7 +8,7 @@ create or replace table DEMO_DB.ALF_LIQUIBASE.QUALTRICS
 (
     SURVEY_ID      VARCHAR(50),
     EXECUTION_FLAG BOOLEAN
-)
+);
 
 
 
