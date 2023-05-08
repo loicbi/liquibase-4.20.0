@@ -1,0 +1,42 @@
+https://youtu.be/8AdiGIb2SY4
+
+changeLogFile = changeLog-file
+
+-- 0 liquibase status  /* to see the list of changeset not applied to database */
+#>  liquibase status
+
+
+-- 1 liquibase generate-changelog
+#>  liquibase generateChangeLog
+
+-- 2 To verufy the sql before you apply any changeset
+#>  liquibase --changeLog-file=myChangeLog.sql updateSQL
+
+
+-- 3 Apply selected changeset in sequence (updateCount 1 :::> last 1 whot didn't never run)
+     Apply selected changeset in sequence (updateCount 3 :::> last 3)
+#>  liquibase --changeLog-file=myChangeLog.sql updateCount 3
+
+-- 4 Apply all changeset of changeLogFile into database
+#>  liquibase --changeLog-file=myChangeLog.sql update
+
+-- 5 Sync the DATABASECHANGELOG table with current changeLogFile object state
+#>  liquibase --changeLog-file=myChangeLog.sql updateSQL
+#>  liquibase --changeLog-file=myChangeLog.sql changeLogSyncSQL
+#>  liquibase --changeLog-file=myChangeLog.sql changeLogSync
+
+-- 6 To set the debug level from CLI for particular execution 
+#>  liquibase --changeLog-file=myChangeLog.sql --logLevel=info update /* You can also set at liquibase.properties file */
+
+
+-- 7 If you want rollback selected changeset in same sequence it was applied 
+#>  liquibase --changeLog-file=myChangeLog.sql rollbackCount 1
+#>  liquibase --changeLog-file=myChangeLog.sql rollbackToDate 2023-05-06
+
+
+-- 8 Get history of changeset to default database
+#>  liquibase history /* To see all deployment history for particular database */
+
+-- 9 Incase we have halfway deployment and it failed, liquibase will hold lock and to release same we have to use below. 
+#>  liquibase --changeLogFile=myChangeLog.sql releaseLocks /* UPDATE DATABASECHANGELOGLOCK SET LOCKED=0 */
+
