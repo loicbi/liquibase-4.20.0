@@ -20,3 +20,7 @@ VALUES ('hhh', true);
 --changeset a.loic:3 labels:example-label
 INSERT INTO DEMO_DB.ALF_LIQUIBASE.QUALTRICS (SURVEY_ID, EXECUTION_FLAG)
 VALUES ('aaaa', true);
+
+--changeset a.loic.develop:4 labels:example-label-develop
+INSERT INTO DEMO_DB.ALF_LIQUIBASE.QUALTRICS (SURVEY_ID, EXECUTION_FLAG)
+VALUES ('ssss', true);
